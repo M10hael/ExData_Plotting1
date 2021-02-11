@@ -63,7 +63,7 @@ dev.off() #Lo guardamos en forma .jpg
 
 #4. PLOT NÚMERO 4
 {
-        jpeg("PLOT 4.jpg")
+        png("PLOT 4.png")
 #Transformamos los datos 
 powers$Date <- as.Date(powers$Date, format="%d/%m/%Y")
 powers$Time <- strptime(powers$Time, format="%H:%M:%S")
