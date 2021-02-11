@@ -1,5 +1,4 @@
-#Instalamos el paqu
-ete ggplot2
+#Instalamos el paquete ggplot2
 install.packages("ggplot2")
 library(ggplot2)
 
@@ -14,7 +13,7 @@ powers <- subset(energy,energy$Date=="1/2/2007" | energy$Date=="2/2/2007")
 #1.PLOT NÚMERO 1
 {
 #Creamos el plot usando hist
-jpeg("PLOT 1.jpg")
+jpeg("PLOT 1.jpg", width = 480, height = 480)
         
 hist(as.numeric(as.character(powers$Global_active_power)), 
              col = "red", main = "Global Active Power", xlab = 
@@ -25,7 +24,7 @@ dev.off() #Lo guradamos en forma .jpg
  
 #2. PLOT NÚMERO 2
 {
-        jpeg("PLOT 2.jpg")
+        
 #Primero transformamos las variables de fecha y hora
 powers$Date <- as.Date(powers$Date, format="%d/%m/%Y")
 powers$Time <- strptime(powers$Time, format="%H:%M:%S")
@@ -34,6 +33,7 @@ powers[1441:2880,"Time"] <- format(powers[1441:2880,"Time"],"2007-02-02 %H:%M:%S
 
 
 #Realizamos el gráfico
+jpeg("PLOT 2.jpg",width = 480, height = 480)
 plot(powers$Time,as.numeric(as.character(powers$Global_active_power)),type="l",xlab="",
      ylab="Global Active Power (kilowatts)") 
 title(main = "Global Active Power VS Time")
@@ -42,7 +42,6 @@ dev.off() #Lo guardamos en forma .jpg
 
 #3.PLOT NÚMERO 3
 {
-        jpeg("PLOT 3.jpg")
 #Transformamos los datos 
 powers$Date <- as.Date(powers$Date, format="%d/%m/%Y")
 powers$Time <- strptime(powers$Time, format="%H:%M:%S")
@@ -51,6 +50,7 @@ powers[1441:2880,"Time"] <- format(powers[1441:2880,"Time"],"2007-02-02 %H:%M:%s
    
 
 # Realizamos el gráfico
+jpeg("PLOT 3.jpg",width = 480, height = 480)
 plot(powers$Time,powers$Sub_metering_1,type="n",xlab="",ylab="Energy sub metering")
 with(powers,lines(Time,as.numeric(as.character(Sub_metering_1))))
 with(powers,lines(Time,as.numeric(as.character(Sub_metering_2)),col="red"))
@@ -63,7 +63,6 @@ dev.off() #Lo guardamos en forma .jpg
 
 #4. PLOT NÚMERO 4
 {
-        png("PLOT 4.png")
 #Transformamos los datos 
 powers$Date <- as.Date(powers$Date, format="%d/%m/%Y")
 powers$Time <- strptime(powers$Time, format="%H:%M:%S")
@@ -73,6 +72,7 @@ powers[1441:2880,"Time"] <- format(powers[1441:2880,"Time"],"2007-02-02 %H:%M:%s
 #Empezamos a construir todos los gráficos 
 par(mfrow=c(2,2))
 #Hacemos los 4 gráficos
+png("PLOT 4.png",width = 480, height = 480)
 with(powers, {
 plot(powers$Time,as.numeric(as.character(powers$Global_active_power)),type="l",xlab="",
                    ylab="Global Active Power (kilowatts)") 
